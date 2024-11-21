@@ -47,13 +47,23 @@ function updateBasicInfo(characterJson, name) {
 function updateStats(characterJson) {
   document.getElementById("ac").innerHTML = characterJson["Ac"];
   document.getElementById("hp").innerHTML = characterJson["Hp"];
+
   document.getElementById("initiativeBonus").innerHTML =
-    "+" + characterJson["InitiativeBonus"];
+    determineSign(characterJson["InitiativeBonus"]) +
+    characterJson["InitiativeBonus"];
   document.getElementById("speed").innerHTML = characterJson["Speed"];
   document.getElementById("spellAtkBonus").innerHTML =
-    "+" + characterJson["SpellAtkBonus"];
+    determineSign(characterJson["SpellAtkBonus"]) +
+    characterJson["SpellAtkBonus"];
   document.getElementById("spellMod").innerHTML =
-    "+" + characterJson["SpellMod"];
+    determineSign(characterJson["SpellMod"]) + characterJson["SpellMod"];
+}
+
+function determineSign(number) {
+  if (number > 0) {
+    return "+";
+  }
+  return "";
 }
 
 function updateSpells(response) {

@@ -146,27 +146,66 @@ function updateGeneralInfo(characterJson, name) {
   document.getElementById("weight").innerHTML = characterJson["Weight"];
 }
 
+//TODO: define list of all skills and interate through it instead of doing whatever mess this is
 function updateSkills(skills) {
-  document.getElementById("acrobatics").innerHTML = skills["acrobatics"] ?? 0;
+  var acrobatics = skills["acrobatics"] ?? 0;
+  var animalHandling = skills["animal handling"] ?? 0;
+  var arcana = skills["arcana"] ?? 0;
+  var athletics = skills["athletics"] ?? 0;
+  var deception = skills["deception"] ?? 0;
+  var history = skills["history"] ?? 0;
+  var insight = skills["insight"] ?? 0;
+  var intimidation = skills["intimidation"] ?? 0;
+  var investigation = skills["investigation"] ?? 0;
+  var medicine = skills["medicine"] ?? 0;
+  var nature = skills["nature"] ?? 0;
+  var perception = skills["perception"] ?? 0;
+  var performance = skills["performance"] ?? 0;
+  var persuasion = skills["persuasion"] ?? 0;
+  var religion = skills["religion"] ?? 0;
+  var sleightOfHand = skills["sleight of hand"] ?? 0;
+  var stealth = skills["stealth"] ?? 0;
+  var survival = skills["survival"] ?? 0;
+
+  document.getElementById("acrobatics").innerHTML =
+    determineSign(acrobatics) + acrobatics;
   document.getElementById("animalHandling").innerHTML =
-    skills["animal handling"] ?? 0;
-  document.getElementById("arcana").innerHTML = skills["arcana"] ?? 0;
-  document.getElementById("athletics").innerHTML = skills["athletics"] ?? 0;
-  document.getElementById("deception").innerHTML = skills["deception"] ?? 0;
-  document.getElementById("history").innerHTML = skills["history"] ?? 0;
-  document.getElementById("insight").innerHTML = skills["insight"] ?? 0;
+    determineSign(animalHandling) + animalHandling;
+  document.getElementById("arcana").innerHTML = determineSign(arcana) + arcana;
+  document.getElementById("athletics").innerHTML =
+    determineSign(athletics) + athletics;
+  document.getElementById("deception").innerHTML =
+    determineSign(deception) + deception;
+  document.getElementById("history").innerHTML =
+    determineSign(history) + history;
+  document.getElementById("insight").innerHTML =
+    determineSign(insight) + insight;
   document.getElementById("intimidation").innerHTML =
-    skills["intimidation"] ?? 0;
+    determineSign(intimidation) + intimidation;
   document.getElementById("investigation").innerHTML =
-    skills["investigation"] ?? 0;
-  document.getElementById("medicine").innerHTML = skills["medicine"] ?? 0;
-  document.getElementById("nature").innerHTML = skills["nature"] ?? 0;
-  document.getElementById("perception").innerHTML = skills["perception"] ?? 0;
-  document.getElementById("performance").innerHTML = skills["performance"] ?? 0;
-  document.getElementById("persuasion").innerHTML = skills["persuasion"] ?? 0;
-  document.getElementById("religion").innerHTML = skills["religion"] ?? 0;
+    determineSign(investigation) + investigation;
+  document.getElementById("medicine").innerHTML =
+    determineSign(medicine) + medicine;
+  document.getElementById("nature").innerHTML = determineSign(nature) + nature;
+  document.getElementById("perception").innerHTML =
+    determineSign(perception) + perception;
+  document.getElementById("performance").innerHTML =
+    determineSign(performance) + performance;
+  document.getElementById("persuasion").innerHTML =
+    determineSign(persuasion) + persuasion;
+  document.getElementById("religion").innerHTML =
+    determineSign(religion) + religion;
   document.getElementById("sleightOfHand").innerHTML =
-    skills["sleight of hand"] ?? 0;
-  document.getElementById("stealth").innerHTML = skills["stealth"] ?? 0;
-  document.getElementById("survival").innerHTML = skills["survival"] ?? 0;
+    determineSign(sleightOfHand) + sleightOfHand;
+  document.getElementById("stealth").innerHTML =
+    determineSign(stealth) + stealth;
+  document.getElementById("survival").innerHTML =
+    determineSign(survival) + survival;
+}
+
+function determineSign(number) {
+  if (number > 0) {
+    return "+";
+  }
+  return "";
 }
