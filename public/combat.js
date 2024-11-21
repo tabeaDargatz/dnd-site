@@ -9,34 +9,92 @@ window.onload = async function () {
     .then((response) => {
       const characterJson = response.data.results[0];
       console.log(response.data);
-      document.getElementById("characterName").innerHTML = name;
-      document.getElementById("ac").innerHTML = characterJson["Ac"];
-      document.getElementById("actions").innerHTML = characterJson["Actions"];
-      document.getElementById("bonusActions").innerHTML =
-        characterJson["BonusActions"];
-      document.getElementById("class").innerHTML = characterJson["Class"];
-      document.getElementById("classFeatures").innerHTML =
-        characterJson["ClassFeatures"];
-      document.getElementById("hp").innerHTML = characterJson["Hp"];
-      document.getElementById("initiativeBonus").innerHTML =
-        "+" + characterJson["InitiativeBonus"];
-      document.getElementById("level").innerHTML = characterJson["Level"];
-      document.getElementById("race").innerHTML = characterJson["Race"];
-      document.getElementById("speciesTraits").innerHTML =
-        characterJson["SpeciesTraits"];
-      document.getElementById("speed").innerHTML = characterJson["Speed"];
-      document.getElementById("spellAtkBonus").innerHTML =
-        "+" + characterJson["SpellAtkBonus"];
-      document.getElementById("spellMod").innerHTML =
-        "+" + characterJson["SpellMod"];
-      document.getElementById("image").src = response.data.PictureUrl;
+
+      updateBasicInfo(characterJson, name);
+      updateActionsAndFeatures(characterJson);
+      updateStats(characterJson);
+      updateSpells(response);
+      updateLinks(response, name);
+
       document.title = name;
-      document.getElementById(
-        "general-info-link"
-      ).href = `index.html?name=${name}`;
-      document.getElementById("combat-link").href = `combat.html?name=${name}`;
     })
     .catch((error) => console.log(error));
-
-  console.log("executed successfully");
 };
+
+function updateLinks(response, name) {
+  document.getElementById("image").src = response.data.PictureUrl;
+  document.getElementById("general-info-link").href = `index.html?name=${name}`;
+  document.getElementById("combat-link").href = `combat.html?name=${name}`;
+}
+
+function updateActionsAndFeatures(characterJson) {
+  document.getElementById("actions").innerHTML = characterJson["Actions"];
+  document.getElementById("bonusActions").innerHTML =
+    characterJson["BonusActions"];
+  document.getElementById("classFeatures").innerHTML =
+    characterJson["ClassFeatures"];
+  document.getElementById("speciesTraits").innerHTML =
+    characterJson["SpeciesTraits"];
+}
+
+function updateBasicInfo(characterJson, name) {
+  document.getElementById("characterName").innerHTML = name;
+  document.getElementById("class").innerHTML = characterJson["Class"];
+  document.getElementById("level").innerHTML = characterJson["Level"];
+  document.getElementById("race").innerHTML = characterJson["Race"];
+}
+
+function updateStats(characterJson) {
+  document.getElementById("ac").innerHTML = characterJson["Ac"];
+  document.getElementById("hp").innerHTML = characterJson["Hp"];
+  document.getElementById("initiativeBonus").innerHTML =
+    "+" + characterJson["InitiativeBonus"];
+  document.getElementById("speed").innerHTML = characterJson["Speed"];
+  document.getElementById("spellAtkBonus").innerHTML =
+    "+" + characterJson["SpellAtkBonus"];
+  document.getElementById("spellMod").innerHTML =
+    "+" + characterJson["SpellMod"];
+}
+
+function updateSpells(response) {
+  var spellsContainer = document.getElementById("spells");
+
+  response.data.Spells.forEach((spellLevel) => {
+    var spellLevelTitle = createSpellTitleContainer(spellLevel);
+    spellsContainer.appendChild(spellLevelTitle);
+
+    var spellList = document.createElement("p");
+    spellList.appendChild(document.createTextNode(spellLevel.Spells));
+    spellsContainer.appendChild(spellList);
+  });
+}
+
+function createSpellTitleContainer(spellLevel) {
+  var spellTitleContainer = document.createElement("h2");
+  var title = document.createElement("div");
+
+  if (spellLevel.Level == "Cantrips") {
+    title.appendChild(document.createTextNode("Cantrips"));
+    spellTitleContainer.appendChild(title);
+  } else {
+    spellTitleContainer.classList.add("spell-container");
+    title.appendChild(document.createTextNode(spellLevel.Level + " Lvl"));
+
+    spellTitleContainer.appendChild(title);
+    spellTitleContainer.appendChild(createSpellSlotIndicator(spellLevel));
+  }
+
+  return spellTitleContainer;
+}
+
+//Create a ▣ square for every spell slot
+function createSpellSlotIndicator(spellLevel) {
+  var slots = document.createElement("div");
+  var slotIndicator = "";
+  for (let i = 0; i < spellLevel.Slots; i++) {
+    slotIndicator += "▣ ";
+  }
+  slots.appendChild(document.createTextNode(slotIndicator));
+
+  return slots;
+}
