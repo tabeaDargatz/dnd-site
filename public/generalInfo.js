@@ -8,7 +8,6 @@ window.onload = async function () {
     )
     .then((response) => {
       const characterJson = response.data.results[0];
-      console.log(response.data);
       document.getElementById("characterName").innerHTML = name;
       document.getElementById("alignment").innerHTML =
         characterJson["Alignment"];
@@ -37,6 +36,9 @@ window.onload = async function () {
       document.getElementById("weight").innerHTML = characterJson["Weight"];
       document.getElementById("wisdom").innerHTML = characterJson["Wisdom"];
 
+      const skills = response.data.Skills;
+      updateSkills(skills);
+
       document.getElementById("image").src = response.data.PictureUrl;
       document.title = name;
       document.getElementById(
@@ -46,3 +48,28 @@ window.onload = async function () {
     })
     .catch((error) => console.log(error));
 };
+
+function updateSkills(skills) {
+  document.getElementById("acrobatics").innerHTML = skills["acrobatics"] ?? 0;
+  document.getElementById("animalHandling").innerHTML =
+    skills["animal handling"] ?? 0;
+  document.getElementById("arcana").innerHTML = skills["arcana"] ?? 0;
+  document.getElementById("athletics").innerHTML = skills["athletics"] ?? 0;
+  document.getElementById("deception").innerHTML = skills["deception"] ?? 0;
+  document.getElementById("history").innerHTML = skills["history"] ?? 0;
+  document.getElementById("insight").innerHTML = skills["insight"] ?? 0;
+  document.getElementById("intimidation").innerHTML =
+    skills["intimidation"] ?? 0;
+  document.getElementById("investigation").innerHTML =
+    skills["investigation"] ?? 0;
+  document.getElementById("medicine").innerHTML = skills["medicine"] ?? 0;
+  document.getElementById("nature").innerHTML = skills["nature"] ?? 0;
+  document.getElementById("perception").innerHTML = skills["perception"] ?? 0;
+  document.getElementById("performance").innerHTML = skills["performance"] ?? 0;
+  document.getElementById("persuasion").innerHTML = skills["persuasion"] ?? 0;
+  document.getElementById("religion").innerHTML = skills["religion"] ?? 0;
+  document.getElementById("sleightOfHand").innerHTML =
+    skills["sleight of hand"] ?? 0;
+  document.getElementById("stealth").innerHTML = skills["stealth"] ?? 0;
+  document.getElementById("survival").innerHTML = skills["survival"] ?? 0;
+}
