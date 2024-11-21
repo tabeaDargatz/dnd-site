@@ -15,6 +15,7 @@ window.onload = async function () {
       updateProficiencies(response);
       updateLanguages(response);
       updateTools(response);
+      updateInventory(response);
 
       document.getElementById("backstory").innerHTML =
         characterJson["Backstory"];
@@ -52,6 +53,51 @@ function updateLanguages(response) {
   //empty li at the end to ensure space at the bottom
   var li = document.createElement("li");
   ul.appendChild(li);
+}
+
+function updateInventory(response) {
+  var inventoryWrapper = document.getElementById("inventory");
+  var inventory = document.createElement("div");
+  inventory.classList.add("side-by-side-container");
+
+  var items = response.data.Inventory;
+  var batchesOfItems = sliceIntoBatches(items, 10);
+  batchesOfItems.forEach((batchOfItems) => {
+    var itemsList = createItemList(batchOfItems);
+    inventory.appendChild(itemsList);
+  });
+
+  inventoryWrapper.appendChild(inventory);
+}
+
+function sliceIntoBatches(fullList, maxPerBatch) {
+  var batches = [];
+
+  var batch = [];
+  fullList.forEach((item) => {
+    if (batch.length >= maxPerBatch) {
+      batches.push(batch);
+      batch = [];
+    }
+    batch.push(item);
+  });
+
+  batches.push(batch);
+
+  return batches;
+}
+
+function createItemList(items) {
+  var itemList = document.createElement("ul");
+  inventory.classList.add("center-horz");
+
+  items.forEach((item) => {
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(item));
+    itemList.appendChild(li);
+  });
+
+  return itemList;
 }
 
 function updateTools(response) {
