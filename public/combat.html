@@ -37,26 +37,30 @@
       <main class="info-sections side-by-side-container">
         <!-- Image Section -->
         <section id="character-image" class="image-section">
-          <img id="image" src="./img/Cara.png" alt="Character Image" />
+          <img
+            id="image"
+            src="./img/defaultCharPic.png"
+            alt="Character Image"
+          />
 
           <div class="side-by-side-container">
             <div class="chip-container">
               <h3 class="chip">
-                <span><strong>19</strong></span>
+                <span id="hp"><strong>19</strong></span>
               </h3>
               <div class="chip-subtitle">HP</div>
             </div>
 
             <div class="chip-container">
               <h3 class="chip">
-                <span><strong>13</strong></span>
+                <span id="ac"><strong>13</strong></span>
               </h3>
               <div class="chip-subtitle">AC</div>
             </div>
 
             <div class="chip-container">
               <h3 class="chip">
-                <span><strong>30</strong></span>
+                <span id="speed"><strong>30</strong></span>
               </h3>
               <div class="chip-subtitle">Speed</div>
             </div>
@@ -64,21 +68,21 @@
           <div class="side-by-side-container">
             <div class="chip-container">
               <h3 class="chip">
-                <span><strong>+2</strong></span>
+                <span id="initiativeBonus"><strong>+2</strong></span>
               </h3>
               <div class="chip-subtitle">Initiative</div>
             </div>
 
             <div class="chip-container">
               <h3 class="chip">
-                <span><strong>+6</strong></span>
+                <span id="spellAtkBonus"><strong>+6</strong></span>
               </h3>
               <div class="chip-subtitle">Spell ATK</div>
             </div>
 
             <div class="chip-container">
               <h3 class="chip">
-                <span><strong>+4</strong></span>
+                <span id="spellMod"><strong>+4</strong></span>
               </h3>
               <div class="chip-subtitle">Spell Mod</div>
             </div>
@@ -88,70 +92,21 @@
         <!-- Background Section -->
         <section id="background" class="info-section">
           <h2>Class Features</h2>
-          <p>
-            <strong>Spellcasting</strong><br />You can spells through your
-            bardic arts. Charisma is your spellcasting ability for your Bard
-            spells (Spell DC 14, Spell Attack +6). You can use a Musical
-            Instrument as a Spellcasting Focus for your Bard spells.<br />
-            <strong>Jack of All Trades</strong><br />
-            You can add half your Proficiency Bonus (1) to ability checks you
-            make that uses a skill proficiency you lack and that doesn't
-            otherwise use your Proficiency Bonus.<br />
-          </p>
+          <p id="classFeatures"></p>
           <h2>Species Traits</h2>
-          <p>
-            <strong>Resourceful</strong><br />You make a melee attack that
-            involves using your body to deal one of the following effects:<br />
-            <strong>Skillful</strong><br />
-            You make an attack roll against the creature, and on a hit, you deal
-            1 + STR Bludgeoning damage. <br />
-            <strong>Versatile</strong><br />
-            The target must succeed on a Str./Dex. (it chooses which) saving
-            throw (DC = 8 + Prof. Bonus + Str.) or it has the Grappled
-            condition.<br />
-          </p>
+          <p id="speciesTraits"></p>
         </section>
 
         <!-- Actions -->
-        <section id="actions" class="info-section">
+        <section id="actionsContainer" class="info-section">
           <h2>Actions</h2>
-          <p>
-            Attack, Dash, Disengage, Dodge, Grapple, Help, Hide, Improvise,
-            Influence, Magic, Ready, Search, Shove, Study, Utilize<br /><br />
-            <strong>Unarmed Strike</strong><br />You make a melee attack that
-            involves using your body to deal one of the following effects:<br />
-            <strong>Damage</strong> You make an attack roll against the
-            creature, and on a hit, you deal 1 + STR Bludgeoning damage. <br />
-            <strong>Grapple</strong> The target must succeed on a Str./Dex. (it
-            chooses which) saving throw (DC = 8 + Prof. Bonus + Str.) or it has
-            the Grappled condition.<br />
-            <strong>Shove</strong> The target must succeed on a Str./Dex. (it
-            chooses which) saving throw (DC = 8 + Prof. Bonus + Str.) or you can
-            either push it 5 ft. away or cause it to have the Prone
-            condition.<br />
-          </p>
+          <p id="actions"></p>
         </section>
 
         <!-- Bonus Actions Section -->
         <section id="bonus-actions" class="info-section">
           <h2>Bonus Actions</h2>
-          <p>
-            <strong>Bardic Inspiration</strong><br />As a Bonus Action, you can
-            inspire another creature within 60 ft. that can see or hear you.
-            That creature gains one of your Bardic Inspiration dice (1d6). Once
-            within the next hour, when the creature fails a D20 Test, the
-            creature can roll the Bardic Inspiration die and add the number
-            rolled to the total, potentially turning the failure into a success.
-            You can confer your Bardic Inspiration die 4 times per Long Rest.<br />
-          </p>
-          <p>
-            <strong>Two Weapon Fighting</strong><br />When you take the Attack
-            action on your turn and attack with a Light weapon, you can make one
-            extra attack as a Bonus Action later on the same turn. That extra
-            attack must be made with a different Light weapon, and you don't add
-            your ability modifier to the extra attack's damage unless that
-            modifier is negative.<br />
-          </p>
+          <p id="bonusActions"></p>
         </section>
 
         <!-- Spells Section -->

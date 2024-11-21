@@ -10,24 +10,25 @@ window.onload = async function () {
       const characterJson = response.data.results[0];
       console.log(response.data);
       document.getElementById("characterName").innerHTML = name;
-      //document.getElementById("ac").innerHTML = characterJson["Ac"];
-      //document.getElementById("actions").innerHTML = characterJson["Actions"];
-      //document.getElementById("bonusActions").innerHTML =
-      //  characterJson["BonusActions"];
+      document.getElementById("ac").innerHTML = characterJson["Ac"];
+      document.getElementById("actions").innerHTML = characterJson["Actions"];
+      document.getElementById("bonusActions").innerHTML =
+        characterJson["BonusActions"];
       document.getElementById("class").innerHTML = characterJson["Class"];
-      //document.getElementById("classFeatures").innerHTML =
-      //  characterJson["ClassFeatures"];
-      //document.getElementById("hp").innerHTML = characterJson["Hp"];
-      //document.getElementById("initiativeBonus").innerHTML =
-      //  characterJson["InitiativeBonus"];
+      document.getElementById("classFeatures").innerHTML =
+        characterJson["ClassFeatures"];
+      document.getElementById("hp").innerHTML = characterJson["Hp"];
+      document.getElementById("initiativeBonus").innerHTML =
+        "+" + characterJson["InitiativeBonus"];
       document.getElementById("level").innerHTML = characterJson["Level"];
       document.getElementById("race").innerHTML = characterJson["Race"];
-      //document.getElementById("speciesTraits").innerHTML =
-      //  characterJson["SpeciesTraits"];
-      //document.getElementById("speed").innerHTML = characterJson["Speed"];
-      //document.getElementById("spellAtkBonus").innerHTML =
-      //  characterJson["SpellAtkBonus"];
-      //document.getElementById("spellMod").innerHTML = characterJson["SpellMod"];
+      document.getElementById("speciesTraits").innerHTML =
+        characterJson["SpeciesTraits"];
+      document.getElementById("speed").innerHTML = characterJson["Speed"];
+      document.getElementById("spellAtkBonus").innerHTML =
+        "+" + characterJson["SpellAtkBonus"];
+      document.getElementById("spellMod").innerHTML =
+        "+" + characterJson["SpellMod"];
       document.getElementById("image").src = response.data.PictureUrl;
       document.title = name;
       document.getElementById(
