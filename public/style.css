@@ -1,0 +1,322 @@
+/* General Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-image: url("https://i.imgur.com/Wb6wye2.jpeg");
+  background-repeat: repeat-x;
+  background-color: #1f1f1f;
+  color: #e0e0e0;
+  font-family: "Spectral", Arial, sans-serif;
+}
+
+.current-nav-item {
+  border-bottom: 1px solid #d4af37;
+}
+
+.center-horz {
+  text-align: center;
+}
+
+.character-header {
+  text-align: center;
+  padding: 20px;
+  color: #d4af37;
+}
+
+.character-header h1 {
+  font-size: 2.5em;
+  margin-bottom: 5px;
+}
+
+.character-header .subtitle {
+  color: #b3b3b3;
+  font-style: italic;
+}
+
+/* Top Navigation Bar Styling */
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100%;
+  padding: 10px 0;
+}
+
+.top-nav ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.top-nav ul li a {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  transition: color 0.3s;
+}
+
+.top-nav ul li {
+  border-bottom: none;
+}
+
+.top-nav ul li a:hover {
+  color: #d4af37;
+}
+
+.icon {
+  height: 60px;
+  width: 60px;
+}
+
+.flex-space-between-container {
+  justify-content: space-between;
+  flex-direction: column;
+  display: flex;
+}
+
+.grey-bg-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.grey-bg {
+  flex-grow: 2;
+  background-color: #1b1b1b;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.blob {
+  color: #d4af37;
+  font-size: 40px;
+  padding: 0;
+  padding-top: 20px;
+}
+
+#pickaxe-container {
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 96px;
+  width: 96px;
+  border-bottom: none;
+  margin: auto;
+  border: 2px solid #d4af37;
+  border-radius: 50%;
+  padding: 0px;
+}
+
+.middle {
+  width: 60%; /* Set content to 3/5 of the viewport width */
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/zwartevilt.png");
+}
+
+.info-sections {
+  padding: 10px;
+  padding-top: 20px;
+  display: block;
+}
+
+/* Matte Gold Border for Sections */
+.info-section {
+  background-color: #1b1b1b;
+  border: 2px solid #d4af37;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #d4af37;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  border-bottom: 1px solid #333333;
+  padding: 8px 0;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+.info-section p {
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Side-by-Side Layout for Background and Image Sections */
+.side-by-side-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#character-image {
+  max-width: 20%;
+}
+
+#proficiencies-container {
+  padding-left: 6px;
+}
+
+.chip-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chip-subtitle {
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.chip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1b1b1b;
+  width: 50px;
+  height: 50px;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+.spell-container {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#general-info {
+  max-width: 20%;
+}
+
+#background {
+  max-width: 55%;
+}
+
+#actions {
+  max-width: 32%;
+}
+
+#bonus-actions {
+  max-width: 32%;
+}
+
+#spells {
+  max-width: 32%;
+}
+
+#general-info ul li {
+  display: flex;
+}
+
+.image-section img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  border: 6px double #d4af37;
+  margin-bottom: 20px;
+}
+
+/* Responsive Layout for Small Screens */
+@media (max-width: 1800px) {
+  .content {
+    width: 90%; /* Adjust width to fit smaller screens */
+    height: 90%;
+  }
+
+  .middle {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .top-nav {
+    width: 90%;
+    height: 90%;
+  }
+
+  #character-image {
+    max-width: 300px;
+  }
+
+  #general-info {
+    max-width: 90%;
+  }
+
+  #background {
+    max-width: 90%;
+  }
+}
+
+/* Responsive Layout for Small Screens */
+@media (max-width: 1050px) {
+  .content {
+    width: 90%; /* Adjust width to fit smaller screens */
+    height: 90%;
+  }
+
+  .middle {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .top-nav {
+    width: 90%;
+    height: 90%;
+  }
+
+  #character-image {
+    max-width: 300px;
+  }
+
+  #general-info {
+    max-width: 90%;
+  }
+
+  #background {
+    max-width: 90%;
+  }
+}
+
+/* Smooth Scrolling for Navigation Links */
+html {
+  scroll-behavior: smooth;
+}
