@@ -1,53 +1,104 @@
 import "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js";
 window.onload = async function () {
-  const params = new URLSearchParams(document.location.search);
-  const name = params.get("name");
+  const name = new URLSearchParams(document.location.search).get("name");
+
   axios
     .get(
       `https://discord-dice-roll-bot.dargatztabea.workers.dev/api/characters?name=${name}`
     )
     .then((response) => {
       const characterJson = response.data.results[0];
-      document.getElementById("characterName").innerHTML = name;
-      document.getElementById("alignment").innerHTML =
-        characterJson["Alignment"];
-      document.getElementById("age").innerHTML = characterJson["Age"];
+
+      updateGeneralInfo(characterJson, name);
+      updateAbilityScores(characterJson);
+      updateSkills(response.data.Skills);
+      updateProficiencies(response);
+      updateLanguages(response);
+      updateTools(response);
+
       document.getElementById("backstory").innerHTML =
         characterJson["Backstory"];
-      document.getElementById("charisma").innerHTML = characterJson["Charisma"];
-      document.getElementById("class").innerHTML = characterJson["Class"];
-      document.getElementById("constitution").innerHTML =
-        characterJson["Constitution"];
-      document.getElementById("dexterity").innerHTML =
-        characterJson["Dexterity"];
-      document.getElementById("eyes").innerHTML = characterJson["Eyes"];
-      document.getElementById("faith").innerHTML = characterJson["Faith"];
-      document.getElementById("gender").innerHTML = characterJson["Gender"];
-      document.getElementById("hair").innerHTML = characterJson["Hair"];
-      document.getElementById("height").innerHTML = characterJson["Height"];
-      document.getElementById("intelligence").innerHTML =
-        characterJson["Intelligence"];
-      document.getElementById("level").innerHTML = characterJson["Level"];
       document.getElementById("personality").innerHTML =
         characterJson["Personality"];
-      document.getElementById("race").innerHTML = characterJson["Race"];
-      document.getElementById("skin").innerHTML = characterJson["Skin"];
-      document.getElementById("strength").innerHTML = characterJson["Strength"];
-      document.getElementById("weight").innerHTML = characterJson["Weight"];
-      document.getElementById("wisdom").innerHTML = characterJson["Wisdom"];
+      console.log(response);
 
-      const skills = response.data.Skills;
-      updateSkills(skills);
-
-      document.getElementById("image").src = response.data.PictureUrl;
+      updateLinks(response, name);
       document.title = name;
-      document.getElementById(
-        "general-info-link"
-      ).href = `index.html?name=${name}`;
-      document.getElementById("combat-link").href = `combat.html?name=${name}`;
     })
     .catch((error) => console.log(error));
 };
+
+function updateProficiencies(response) {
+  var ul = document.getElementById("proficiencyList");
+  response.data.Proficiencies.forEach((proficiency) => {
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(proficiency));
+    ul.appendChild(li);
+  });
+
+  //empty li at the end to ensure space at the bottom
+  var li = document.createElement("li");
+  ul.appendChild(li);
+}
+
+function updateLanguages(response) {
+  var ul = document.getElementById("languageList");
+  response.data.Languages.forEach((language) => {
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(language));
+    ul.appendChild(li);
+  });
+
+  //empty li at the end to ensure space at the bottom
+  var li = document.createElement("li");
+  ul.appendChild(li);
+}
+
+function updateTools(response) {
+  var ul = document.getElementById("toolList");
+  response.data.Tools.forEach((tool) => {
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(tool));
+    ul.appendChild(li);
+  });
+
+  //empty li at the end to ensure space at the bottom
+  var li = document.createElement("li");
+  ul.appendChild(li);
+}
+
+function updateLinks(response, name) {
+  document.getElementById("image").src = response.data.PictureUrl;
+  document.getElementById("general-info-link").href = `index.html?name=${name}`;
+  document.getElementById("combat-link").href = `combat.html?name=${name}`;
+}
+
+function updateAbilityScores(characterJson) {
+  document.getElementById("charisma").innerHTML = characterJson["Charisma"];
+  document.getElementById("constitution").innerHTML =
+    characterJson["Constitution"];
+  document.getElementById("dexterity").innerHTML = characterJson["Dexterity"];
+  document.getElementById("intelligence").innerHTML =
+    characterJson["Intelligence"];
+  document.getElementById("strength").innerHTML = characterJson["Strength"];
+  document.getElementById("wisdom").innerHTML = characterJson["Wisdom"];
+}
+
+function updateGeneralInfo(characterJson, name) {
+  document.getElementById("characterName").innerHTML = name;
+  document.getElementById("level").innerHTML = characterJson["Level"];
+  document.getElementById("alignment").innerHTML = characterJson["Alignment"];
+  document.getElementById("age").innerHTML = characterJson["Age"];
+  document.getElementById("class").innerHTML = characterJson["Class"];
+  document.getElementById("eyes").innerHTML = characterJson["Eyes"];
+  document.getElementById("faith").innerHTML = characterJson["Faith"];
+  document.getElementById("gender").innerHTML = characterJson["Gender"];
+  document.getElementById("hair").innerHTML = characterJson["Hair"];
+  document.getElementById("height").innerHTML = characterJson["Height"];
+  document.getElementById("race").innerHTML = characterJson["Race"];
+  document.getElementById("skin").innerHTML = characterJson["Skin"];
+  document.getElementById("weight").innerHTML = characterJson["Weight"];
+}
 
 function updateSkills(skills) {
   document.getElementById("acrobatics").innerHTML = skills["acrobatics"] ?? 0;
