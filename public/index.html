@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Character</title>
+    <title>Characters</title>
     <link rel="stylesheet" href="style.css" />
-
+    <link rel="stylesheet" href="index.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Spectral&display=swap"
       rel="stylesheet"
@@ -14,289 +14,41 @@
   <body>
     <!--MIDDLE-->
     <div class="middle">
-      <!-- Top Navigation Bar -->
       <header class="character-header">
-        <h1 id="characterName"></h1>
-        <p class="subtitle">
-          Lvl <span id="level"></span> <span id="race"></span>
-          <span id="class"></span>
-        </p>
+        <h1 id="characterName">DnD Campaign Character Overview</h1>
       </header>
-      <nav class="top-nav">
-        <ul>
-          <li>
-            <a class="current-nav-item" id="general-info-link" href="index.html"
-              >General Information</a
-            >
-          </li>
-          <li><a id="combat-link" href="combat.html">Combat</a></li>
-        </ul>
-      </nav>
       <!-- Main Content Area -->
-      <main class="info-sections side-by-side-container">
+      <main>
         <!-- General Information Section -->
-        <section id="general-info" class="info-section">
-          <h2>General<br />Information</h2>
-          <ul>
-            <li>
-              <strong>Age:&nbsp;</strong>
-              <div id="age"></div>
-            </li>
-            <li>
-              <strong>Gender:&nbsp;</strong>
-              <div id="gender"></div>
-            </li>
-            <li>
-              <strong>Height:&nbsp;</strong>
-              <div id="height"></div>
-            </li>
-            <li>
-              <strong>Weight:&nbsp;</strong>
-              <div id="weight"></div>
-            </li>
-            <li>
-              <strong>Hair:&nbsp;</strong>
-              <div id="hair"></div>
-            </li>
-            <li>
-              <strong>Eyes:&nbsp;</strong>
-              <div id="eyes"></div>
-            </li>
-            <li>
-              <strong>Skin:&nbsp;</strong>
-              <div id="skin"></div>
-            </li>
-            <li>
-              <strong>Alignment:&nbsp;</strong>
-              <div id="alignment"></div>
-            </li>
-            <li>
-              <strong>Faith:&nbsp;</strong>
-              <div id="faith"></div>
-            </li>
-          </ul>
+        <section>
+          <h2>Gods of Corrupt Fates</h2>
+          <div class="side-by-side-container character-list">
+            <a href="characterInfo.html?name=Ruut">
+              <div class="character-overview">
+                <img src="./img/defaultCharPic.png" alt="Character Image" />
+                <h2><strong>Ruut</strong></h2>
+              </div>
+            </a>
+
+            <a href="characterInfo.html?name=Xulle">
+              <div class="character-overview">
+                <img src="./img/defaultCharPic.png" alt="Character Image" />
+                <h2><strong>Xulle</strong></h2>
+              </div>
+            </a>
+
+            <a href="characterInfo.html?name=Cara">
+              <div class="character-overview">
+                <img src="./img/defaultCharPic.png" alt="Character Image" />
+                <h2><strong>Cara</strong></h2>
+              </div>
+            </a>
+          </div>
         </section>
         <!-- Image Section -->
-        <section id="character-image" class="image-section">
-          <img
-            id="image"
-            src="./img/defaultCharPic.png"
-            alt="Character Image"
-          />
-
-          <div class="side-by-side-container">
-            <div class="chip-container">
-              <h3 class="chip">
-                <span id="strength"><strong></strong></span>
-              </h3>
-              <div class="chip-subtitle">STR</div>
-            </div>
-
-            <div class="chip-container">
-              <h3 class="chip">
-                <span id="dexterity"><strong></strong></span>
-              </h3>
-              <div class="chip-subtitle">DEX</div>
-            </div>
-
-            <div class="chip-container">
-              <h3 class="chip">
-                <span id="constitution"><strong></strong></span>
-              </h3>
-              <div class="chip-subtitle">CON</div>
-            </div>
-          </div>
-          <div class="side-by-side-container">
-            <div class="chip-container">
-              <h3 class="chip">
-                <span id="intelligence"><strong></strong></span>
-              </h3>
-              <div class="chip-subtitle">INT</div>
-            </div>
-
-            <div class="chip-container">
-              <h3 class="chip">
-                <span id="wisdom"><strong></strong></span>
-              </h3>
-              <div class="chip-subtitle">WIS</div>
-            </div>
-
-            <div class="chip-container">
-              <h3 class="chip">
-                <span id="charisma"><strong></strong></span>
-              </h3>
-              <div class="chip-subtitle">CHA</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Background Section -->
-        <section id="background" class="info-section">
-          <h2>Backstory</h2>
-          <p id="backstory">
-            Could not find any backstory information for this character.
-            Consider adding some information here.
-          </p>
-          <h2>Personality</h2>
-          <p id="personality">
-            Could not find any personality information for this character.
-            Consider adding some information here.
-          </p>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="info-section center-horz">
-          <h2>Skills</h2>
-          <div class="side-by-side-container">
-            <ul class="center-horz">
-              <li>
-                <strong><span id="acrobatics">0</span><br />Acrobatics</strong>
-              </li>
-              <li>
-                <strong
-                  ><span id="animalHandling">0</span><br />Animal
-                  Handling</strong
-                >
-              </li>
-              <li>
-                <strong><span id="arcana">0</span><br />Arcana</strong>
-              </li>
-              <li>
-                <strong><span id="athletics">0</span><br />Athletics</strong>
-              </li>
-              <li>
-                <strong><span id="deception">0</span><br />Deception</strong>
-              </li>
-              <li>
-                <strong><span id="history">0</span><br />History</strong>
-              </li>
-            </ul>
-
-            <ul class="center-horz">
-              <li>
-                <strong><span id="insight">0</span><br />Insight</strong>
-              </li>
-              <li>
-                <strong
-                  ><span id="intimidation">0</span><br />Intimidation</strong
-                >
-              </li>
-              <li>
-                <strong
-                  ><span id="investigation">0</span><br />Investigation</strong
-                >
-              </li>
-              <li>
-                <strong><span id="medicine">0</span><br />Medicine</strong>
-              </li>
-              <li>
-                <strong><span id="nature">0</span><br />Nature</strong>
-              </li>
-              <li>
-                <strong><span id="perception">0</span><br />Perception</strong>
-              </li>
-            </ul>
-
-            <ul class="center-horz">
-              <li>
-                <strong
-                  ><span id="performance">0</span><br />Performance</strong
-                >
-              </li>
-              <li>
-                <strong><span id="persuasion">0</span><br />Persuasion</strong>
-              </li>
-              <li>
-                <strong><span id="religion">0</span><br />Religion</strong>
-              </li>
-              <li>
-                <strong
-                  ><span id="sleightOfHand">0</span><br />Sleight of
-                  Hand</strong
-                >
-              </li>
-              <li>
-                <strong><span id="stealth">0</span><br />Stealth</strong>
-              </li>
-              <li>
-                <strong><span id="survival">0</span><br />Survival</strong>
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- Proficiencies Section -->
-        <div class="grey-bg-container">
-          <h2 class="center-horz">Proficiencies</h2>
-          <div class="grey-bg flex-space-between-container">
-            <div>
-              <div id="proficiencies-container" class="icon-container">
-                <img
-                  class="icon"
-                  src="./img/proficiencies.png"
-                  alt="Proficiencies Icon"
-                />
-              </div>
-
-              <section id="proficiencies">
-                <ul id="proficiencyList" class="center-horz">
-                  <li></li>
-                </ul>
-              </section>
-            </div>
-            <div class="blob center-horz">◇</div>
-          </div>
-        </div>
-
-        <!-- Languages Section -->
-        <div class="grey-bg-container">
-          <h2 class="center-horz">Languages</h2>
-          <div class="grey-bg flex-space-between-container">
-            <div>
-              <div class="icon-container">
-                <img
-                  class="icon"
-                  src="./img/languages.png"
-                  alt="Language Icon"
-                />
-              </div>
-
-              <section id="languages">
-                <ul id="languageList" class="center-horz">
-                  <li></li>
-                </ul>
-              </section>
-            </div>
-            <div class="blob center-horz">◇</div>
-          </div>
-        </div>
-
-        <!--Tools-->
-        <div class="grey-bg-container">
-          <h2 class="center-horz">Tools</h2>
-          <div class="grey-bg flex-space-between-container">
-            <div>
-              <div id="pickaxe-container" class="icon-container">
-                <img class="icon" src="./img/tools.png" alt="Tools Icon" />
-              </div>
-
-              <section id="tools">
-                <ul id="toolList" class="center-horz">
-                  <li></li>
-                </ul>
-              </section>
-            </div>
-
-            <div class="blob center-horz">◇</div>
-          </div>
-        </div>
-
-        <!-- Inventory Section -->
-        <section id="inventory" class="info-section">
-          <h2 class="center-horz">Inventory</h2>
-        </section>
+        <section id="character-image" class="image-section"></section>
       </main>
     </div>
-    <script type="module" src="generalInfo.js"></script>
+    <script type="module" src="index.js"></script>
   </body>
 </html>

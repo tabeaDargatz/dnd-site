@@ -1,0 +1,25 @@
+main {
+  padding: 50px;
+}
+
+.character-list a {
+  text-decoration: none;
+}
+
+.character-overview {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.character-overview img {
+  max-width: 200px;
+}
+
+.character-overview h2 {
+  text-align: center;
+  padding: 20px;
+  color: #d4af37;
+  border-bottom: none;
+  text-transform: none;
+}
