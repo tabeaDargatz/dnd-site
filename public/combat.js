@@ -23,7 +23,9 @@ window.onload = async function () {
 
 function updateLinks(response, name) {
   document.getElementById("image").src = response.data.PictureUrl;
-  document.getElementById("general-info-link").href = `index.html?name=${name}`;
+  document.getElementById(
+    "general-info-link"
+  ).href = `characterInfo.html?name=${name}`;
   document.getElementById("combat-link").href = `combat.html?name=${name}`;
 }
 
