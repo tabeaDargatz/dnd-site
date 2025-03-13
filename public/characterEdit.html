@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="characterEdit.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!--MIDDLE-->
+    <div class="middle" id="content">
+      <a href="characterInfo.html" class="button" id="back-button">Back</a>
+      <header class="character-header">
+        <h1 id="characterName"></h1>
+      </header>
+
+      <div class="flex-container">
+        <form id="characterDetails">
+          <div class="table">
+            <p>
+              <label for="Race">Race:</label>
+              <input type="text" id="race" name="Race" /><br />
+            </p>
+
+            <p>
+              <label for="Class">Class:</label>
+              <input type="text" id="class" name="Class" /><br />
+            </p>
+            <p>
+              <label for="Level">Level:</label>
+              <input type="number" id="level" name="Level" /><br /><br />
+            </p>
+
+            <p>
+              <label for="Age">Age:</label>
+              <input type="text" id="age" name="Age" /><br />
+            </p>
+            <p>
+              <label for="Gender">Gender:</label>
+              <input type="text" id="gender" name="Gender" /><br />
+            </p>
+            <p>
+              <label for="Height">Height:</label>
+              <input type="text" id="height" name="Height" /><br />
+            </p>
+            <p>
+              <label for="Weight">Weight:</label>
+              <input type="text" id="weight" name="Weight" /><br />
+            </p>
+            <p>
+              <label for="Hair">Hair:</label>
+              <input type="text" id="hair" name="Hair" /><br />
+            </p>
+            <p>
+              <label for="Eyes">Eyes:</label>
+              <input type="text" id="eyes" name="Eyes" /><br />
+            </p>
+            <p>
+              <label for="Skin">Skin:</label>
+              <input type="text" id="skin" name="Skin" /><br />
+            </p>
+            <p>
+              <label for="Alignment">Alignment:</label>
+              <input type="text" id="alignment" name="Alignment" /><br />
+            </p>
+            <p>
+              <label for="Faith">Faith:</label>
+              <input type="text" id="faith" name="Faith" /><br /><br />
+            </p>
+
+            <p>
+              <label for="Backstory">Backstory:</label>
+              <textarea
+                id="backstory"
+                name="Backstory"
+                rows="10"
+                cols="50"
+              ></textarea>
+              <br />
+            </p>
+            <p>
+              <label for="Personality">Personality:</label>
+              <textarea
+                id="personality"
+                name="Personality"
+                rows="10"
+                cols="50"
+              ></textarea>
+            </p>
+          </div>
+          <br />
+
+          <div class="table">
+            <p>
+              <label for="Strength">Strength:</label>
+              <input type="number" id="strength" name="Strength" /><br />
+            </p>
+
+            <p>
+              <label for="Dexterity">Dexterity:</label>
+              <input type="number" id="dexterity" name="Dexterity" /><br />
+            </p>
+            <p>
+              <label for="Constitution">Constitution:</label>
+              <input
+                type="number"
+                id="constitution"
+                name="Constitution"
+              /><br />
+            </p>
+            <p>
+              <label for="Intelligence">Intelligence:</label>
+              <input
+                type="number"
+                id="intelligence"
+                name="Intelligence"
+              /><br />
+            </p>
+            <p>
+              <label for="Wisdom">Wisdom:</label>
+              <input type="number" id="wisdom" name="Wisdom" /><br />
+            </p>
+            <p>
+              <label for="Charisma">Charisma:</label>
+              <input type="number" id="charisma" name="Charisma" /><br /><br />
+            </p>
+          </div>
+        </form>
+        <form id="skillModifiers">
+          <p>
+            <label for="acrobatics">acrobatics:</label>
+            <input type="number" id="acrobatics" name="acrobatics" /><br />
+          </p>
+
+          <p>
+            <label for="insight">insight:</label>
+            <input type="number" id="insight" name="insight" /><br />
+          </p>
+          <p>
+            <label for="performance">performance:</label>
+            <input type="number" id="performance" name="performance" /><br />
+          </p>
+          <p>
+            <label for="animal handling">animal handling:</label>
+            <input
+              type="number"
+              id="animalHandling"
+              name="animal handling"
+            /><br />
+          </p>
+          <p>
+            <label for="intimidation">intimidation:</label>
+            <input type="number" id="intimidation" name="intimidation" /><br />
+          </p>
+          <p>
+            <label for="persuasion">persuasion:</label>
+            <input type="number" id="persuasion" name="persuasion" /><br />
+          </p>
+          <p>
+            <label for="arcana">arcana:</label>
+            <input type="number" id="arcana" name="arcana" /><br />
+          </p>
+          <p>
+            <label for="investigation">investigation:</label>
+            <input
+              type="number"
+              id="investigation"
+              name="investigation"
+            /><br />
+          </p>
+          <p>
+            <label for="religion">religion:</label>
+            <input type="number" id="religion" name="religion" /><br />
+          </p>
+          <p>
+            <label for="athletics">athletics:</label>
+            <input type="number" id="athletics" name="athletics" /><br />
+          </p>
+          <p>
+            <label for="medicine">Medicine:</label>
+            <input type="number" id="medicine" name="medicine" /><br />
+          </p>
+          <p>
+            <label for="sleight of hand">sleight of hand:</label>
+            <input
+              type="number"
+              id="sleightOfHand"
+              name="sleight of hand"
+            /><br />
+          </p>
+          <p>
+            <label for="deception">deception:</label>
+            <input type="number" id="deception" name="deception" /><br />
+          </p>
+          <p>
+            <label for="nature">nature:</label>
+            <input type="number" id="nature" name="nature" /><br />
+          </p>
+          <p>
+            <label for="stealth">stealth:</label>
+            <input type="number" id="stealth" name="stealth" /><br />
+          </p>
+          <p>
+            <label for="history">history:</label>
+            <input type="number" id="history" name="history" /><br />
+          </p>
+          <p>
+            <label for="perception">perception:</label>
+            <input type="number" id="perception" name="perception" /><br />
+          </p>
+          <p>
+            <label for="survival">survival:</label>
+            <input type="number" id="survival" name="survival" /><br />
+          </p>
+          <br />
+        </form>
+      </div>
+
+      <button id="save">Save Changes</button>
+    </div>
+    <script type="module" src="characterEdit.js"></script>
+  </body>
+</html>

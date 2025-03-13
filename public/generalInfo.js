@@ -21,7 +21,6 @@ window.onload = async function () {
         characterJson["Backstory"];
       document.getElementById("personality").innerHTML =
         characterJson["Personality"];
-      console.log(response);
 
       updateLinks(response, name);
       document.title = name;
@@ -119,6 +118,7 @@ function updateLinks(response, name) {
     "general-info-link"
   ).href = `characterInfo.html?name=${name}`;
   document.getElementById("combat-link").href = `combat.html?name=${name}`;
+  document.getElementById("edit-link").href = `characterEdit.html?name=${name}`;
 }
 
 function updateAbilityScores(characterJson) {

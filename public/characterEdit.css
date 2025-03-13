@@ -1,0 +1,22 @@
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.table {
+  display: table;
+  padding-top: 50px;
+}
+p {
+  display: table-row;
+}
+label {
+  display: table-cell;
+}
+input {
+  display: table-cell;
+}
+
+.middle {
+  padding: 20px;
+}

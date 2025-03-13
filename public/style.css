@@ -255,11 +255,17 @@ ul li:last-child {
   margin-bottom: 20px;
 }
 
-#back-button {
+.button {
   display: inline-block;
   padding-top: 20px;
   padding-left: 20px;
   padding-bottom: 0px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  color: aqua;
 }
 
 /* Responsive Layout for Small Screens */
