@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", function () {
     console.log(updateData);
     axios
       .put(
-        `http://127.0.0.1:8787/api/edit?name=${name}`,
+        `https://discord-dice-roll-bot.dargatztabea.workers.dev/api/edit?name=${name}`,
         JSON.stringify(updateData)
       )
       .then((response) => {
