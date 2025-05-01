@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="characterEdit.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!--MIDDLE-->
+    <div class="middle" id="content">
+      <a href="index.html" class="button" id="back-button">Back</a>
+
+      <div class="flex-container">
+        <form id="charCreation">
+          <p>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" /><br />
+          </p>
+          <label for="campaign">Campaign:</label>
+          <select name="campaign" id="campaign">
+            <option value="Gods of Corrupt Fates">Gods of Corrupt Fates</option>
+            <option value="Adventures of Wildemount">
+              Adventures of Wildemount
+            </option>
+          </select>
+        </form>
+      </div>
+
+      <button id="save">Create</button>
+    </div>
+    <script type="module" src="createChar.js"></script>
+  </body>
+</html>
