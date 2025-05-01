@@ -48,13 +48,16 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchUpdates() {
-  const actionsAndFeatures = document.getElementById("actionsAndFeatures");
-  const attackStats = document.getElementById("attackStats");
   let data = new Object();
-  data["actionsAndFeatures"] = Object.fromEntries(
-    new FormData(actionsAndFeatures)
+
+  let actionsAndFeatures = Object.fromEntries(
+    new FormData(document.getElementById("actionsAndFeatures"))
   );
-  data["attackStats"] = Object.fromEntries(new FormData(attackStats));
+  let attackStats = Object.fromEntries(
+    new FormData(document.getElementById("attackStats"))
+  );
+
+  data["characterDetails"] = { ...actionsAndFeatures, ...attackStats };
   return data;
 }
 
