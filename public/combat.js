@@ -1,4 +1,24 @@
 import "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js";
+
+const updateableElements = new Map([
+  ["actions", "Actions"],
+  ["bonusActions", "BonusActions"],
+  ["classFeatures", "ClassFeatures"],
+  ["speciesTraits", "SpeciesTraits"],
+  ["class", "Class"],
+  ["level", "Level"],
+  ["race", "Race"],
+  ["ac", "Ac"],
+  ["hp", "Hp"],
+  ["speed", "Speed"],
+]);
+
+const updateableSignedElements = new Map([
+  ["initiativeBonus", "InitiativeBonus"],
+  ["spellAtkBonus", "SpellAtkBonus"],
+  ["spellMod", "SpellMod"],
+]);
+
 window.onload = async function () {
   const params = new URLSearchParams(document.location.search);
   const name = params.get("name");
@@ -8,15 +28,13 @@ window.onload = async function () {
     )
     .then((response) => {
       const characterJson = response.data.results[0];
-      console.log(response.data);
 
-      updateBasicInfo(characterJson, name);
-      updateActionsAndFeatures(characterJson);
-      updateStats(characterJson);
+      updateElements(characterJson);
       updateSpells(response);
       updateLinks(response, name);
 
       document.title = name;
+      document.getElementById("characterName").innerHTML = name;
     })
     .catch((error) => console.log(error));
 };
@@ -29,36 +47,15 @@ function updateLinks(response, name) {
   document.getElementById("combat-link").href = `combat.html?name=${name}`;
 }
 
-function updateActionsAndFeatures(characterJson) {
-  document.getElementById("actions").innerHTML = characterJson["Actions"];
-  document.getElementById("bonusActions").innerHTML =
-    characterJson["BonusActions"];
-  document.getElementById("classFeatures").innerHTML =
-    characterJson["ClassFeatures"];
-  document.getElementById("speciesTraits").innerHTML =
-    characterJson["SpeciesTraits"];
-}
+function updateElements(characterJson) {
+  updateableElements.forEach((value, key) => {
+    document.getElementById(key).innerHTML = characterJson[value];
+  });
 
-function updateBasicInfo(characterJson, name) {
-  document.getElementById("characterName").innerHTML = name;
-  document.getElementById("class").innerHTML = characterJson["Class"];
-  document.getElementById("level").innerHTML = characterJson["Level"];
-  document.getElementById("race").innerHTML = characterJson["Race"];
-}
-
-function updateStats(characterJson) {
-  document.getElementById("ac").innerHTML = characterJson["Ac"];
-  document.getElementById("hp").innerHTML = characterJson["Hp"];
-
-  document.getElementById("initiativeBonus").innerHTML =
-    determineSign(characterJson["InitiativeBonus"]) +
-    characterJson["InitiativeBonus"];
-  document.getElementById("speed").innerHTML = characterJson["Speed"];
-  document.getElementById("spellAtkBonus").innerHTML =
-    determineSign(characterJson["SpellAtkBonus"]) +
-    characterJson["SpellAtkBonus"];
-  document.getElementById("spellMod").innerHTML =
-    determineSign(characterJson["SpellMod"]) + characterJson["SpellMod"];
+  updateableSignedElements.forEach((value, key) => {
+    document.getElementById(key).innerHTML =
+      determineSign(characterJson[value]) + characterJson[value];
+  });
 }
 
 function determineSign(number) {
