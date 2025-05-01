@@ -9,12 +9,16 @@ window.onload = async function () {
     .then((response) => {
       const characterJson = response.data.results[0];
       console.log(characterJson);
-      initGeneralInfo(characterJson, name);
-      initAbilityScores(characterJson);
-      document.getElementById("backstory").value = characterJson["Backstory"];
-      document.getElementById("personality").value =
-        characterJson["Personality"];
+
+      document.getElementById("classFeatures").value =
+        characterJson["ClassFeatures"];
+      document.getElementById("speciesTraits").value =
+        characterJson["SpeciesTraits"];
+      document.getElementById("actions").value = characterJson["Actions"];
+      document.getElementById("bonusActions").value =
+        characterJson["BonusActions"];
       document.title = name;
+      initAttackStats(characterJson);
     })
     .catch((error) => console.log(error));
 };
@@ -32,42 +36,35 @@ window.addEventListener("DOMContentLoaded", function () {
         JSON.stringify(updateData)
       )
       .then((response) => {
-        alert("Changes saved successfully.");
+        console.log(response);
+        if ((response.status = 200)) {
+          alert("Changes saved successfully.");
+        } else {
+          alert("Something went wrong. Im gonna kill myself.");
+        }
       })
       .catch((error) => console.log(error));
   });
 });
 
 function fetchUpdates() {
-  const characterDetails = document.getElementById("characterDetails");
-  const skillModifiers = document.getElementById("skillModifiers");
+  const actionsAndFeatures = document.getElementById("actionsAndFeatures");
+  const attackStats = document.getElementById("attackStats");
   let data = new Object();
-  data["characterDetails"] = Object.fromEntries(new FormData(characterDetails));
-  data["skillModifiers"] = Object.fromEntries(new FormData(skillModifiers));
+  data["actionsAndFeatures"] = Object.fromEntries(
+    new FormData(actionsAndFeatures)
+  );
+  data["attackStats"] = Object.fromEntries(new FormData(attackStats));
   return data;
 }
 
-function initGeneralInfo(characterJson, name) {
-  document.getElementById("characterName").innerHTML = name;
-  document.getElementById("level").value = characterJson["Level"];
-  document.getElementById("alignment").value = characterJson["Alignment"];
-  document.getElementById("age").value = characterJson["Age"];
-  document.getElementById("class").value = characterJson["Class"];
-  document.getElementById("eyes").value = characterJson["Eyes"];
-  document.getElementById("faith").value = characterJson["Faith"];
-  document.getElementById("gender").value = characterJson["Gender"];
-  document.getElementById("hair").value = characterJson["Hair"];
-  document.getElementById("height").value = characterJson["Height"];
-  document.getElementById("race").value = characterJson["Race"];
-  document.getElementById("skin").value = characterJson["Skin"];
-  document.getElementById("weight").value = characterJson["Weight"];
-}
-
-function initAbilityScores(characterJson) {
-  document.getElementById("charisma").value = characterJson["Charisma"];
-  document.getElementById("constitution").value = characterJson["Constitution"];
-  document.getElementById("dexterity").value = characterJson["Dexterity"];
-  document.getElementById("intelligence").value = characterJson["Intelligence"];
-  document.getElementById("strength").value = characterJson["Strength"];
-  document.getElementById("wisdom").value = characterJson["Wisdom"];
+function initAttackStats(characterJson) {
+  document.getElementById("hp").value = characterJson["Hp"];
+  document.getElementById("ac").value = characterJson["Ac"];
+  document.getElementById("speed").value = characterJson["Speed"];
+  document.getElementById("initiativeBonus").value =
+    characterJson["InitiativeBonus"];
+  document.getElementById("spellAtkBonus").value =
+    characterJson["SpellAtkBonus"];
+  document.getElementById("spellMod").value = characterJson["SpellMod"];
 }
