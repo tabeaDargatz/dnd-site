@@ -41,6 +41,7 @@ window.onload = async function () {
 
 function updateLinks(response, name) {
   document.getElementById("image").src = response.data.PictureUrl;
+  document.getElementById("edit-link").href = `combatEdit.html?name=${name}`;
   document.getElementById(
     "general-info-link"
   ).href = `characterInfo.html?name=${name}`;
