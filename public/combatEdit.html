@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="characterEdit.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!--MIDDLE-->
+    <div class="middle" id="content">
+      <a href="characterInfo.html" class="button" id="back-button">Back</a>
+      <header class="character-header">
+        <h1 id="characterName"></h1>
+      </header>
+
+      <div class="flex-container">
+        <form id="actionsAndFeatures">
+          <div class="table">
+            <p>
+              <label for="Actions">Actions:</label>
+              <textarea
+                id="actions"
+                name="Actions"
+                rows="10"
+                cols="50"
+              ></textarea>
+              <br />
+            </p>
+            <p>
+              <label for="BonusActions">Bonus Actions:</label>
+              <textarea
+                id="bonusActions"
+                name="BonusActions"
+                rows="10"
+                cols="50"
+              ></textarea>
+            </p>
+
+            <p>
+              <label for="ClassFeatures">Class Features:</label>
+              <textarea
+                id="classFeatures"
+                name="ClassFeatures"
+                rows="10"
+                cols="50"
+              ></textarea>
+              <br />
+            </p>
+            <p>
+              <label for="SpeciesTraits">Species Traits:</label>
+              <textarea
+                id="speciesTraits"
+                name="SpeciesTraits"
+                rows="10"
+                cols="50"
+              ></textarea>
+            </p>
+          </div>
+          <br />
+        </form>
+        <form id="attackStats">
+          <p>
+            <label for="hp">HP:</label>
+            <input type="number" id="hp" name="hp" /><br />
+          </p>
+
+          <p>
+            <label for="ac">AC:</label>
+            <input type="number" id="ac" name="ac" /><br />
+          </p>
+          <p>
+            <label for="speed">Speed:</label>
+            <input type="number" id="speed" name="speed" /><br />
+          </p>
+          <p>
+            <label for="initiativeBonus">Initiative:</label>
+            <input
+              type="number"
+              id="initiativeBonus"
+              name="initiativeBonus"
+            /><br />
+          </p>
+          <p>
+            <label for="spellAtkBonus">Spell ATK:</label>
+            <input
+              type="number"
+              id="spellAtkBonus"
+              name="spellAtkBonus"
+            /><br />
+          </p>
+          <p>
+            <label for="spellMod">Spell Mod:</label>
+            <input type="number" id="spellMod" name="spellMod" /><br />
+          </p>
+          <br />
+        </form>
+      </div>
+
+      <button id="save">Save Changes</button>
+    </div>
+    <script type="module" src="characterEdit.js"></script>
+  </body>
+</html>
