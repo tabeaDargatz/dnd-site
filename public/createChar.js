@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", function () {
     let updateData = new Object();
     updateData["name"] = document.getElementById("name").value;
     updateData["campaign"] = document.getElementById("campaign").value;
-
+    console.log(updateData);
     axios
       .post(
         `https://discord-dice-roll-bot.dargatztabea.workers.dev/api/create`,
