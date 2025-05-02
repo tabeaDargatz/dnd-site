@@ -5,6 +5,11 @@ window.addEventListener("DOMContentLoaded", function () {
     let updateData = new Object();
     updateData["name"] = document.getElementById("name").value;
     updateData["campaign"] = document.getElementById("campaign").value;
+    console.log(updateData["name"]);
+    if (!updateData["name"]) {
+      this.alert("please enter a name.");
+      return;
+    }
     console.log(updateData);
     axios
       .post(
