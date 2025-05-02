@@ -19,64 +19,66 @@
         <h1 id="characterName"></h1>
       </header>
 
-      <div class="flex-container">
-        <form id="actionsAndFeatures">
-          <div class="table">
-            <p>
-              <label for="Actions">Actions:</label>
-              <textarea
-                id="actions"
-                name="Actions"
-                rows="10"
-                cols="50"
-              ></textarea>
-              <br />
-            </p>
-            <p>
-              <label for="BonusActions">Bonus Actions:</label>
-              <textarea
-                id="bonusActions"
-                name="BonusActions"
-                rows="10"
-                cols="50"
-              ></textarea>
-            </p>
+      <form id="actionsAndFeatures">
+        <div class="textarea-row">
+          <p>
+            <label for="actions">Actions:</label><br />
+            <textarea
+              id="actions"
+              name="Actions"
+              rows="15"
+              cols="50"
+            ></textarea>
+          </p>
 
-            <p>
-              <label for="ClassFeatures">Class Features:</label>
-              <textarea
-                id="classFeatures"
-                name="ClassFeatures"
-                rows="10"
-                cols="50"
-              ></textarea>
-              <br />
-            </p>
-            <p>
-              <label for="SpeciesTraits">Species Traits:</label>
-              <textarea
-                id="speciesTraits"
-                name="SpeciesTraits"
-                rows="10"
-                cols="50"
-              ></textarea>
-            </p>
-          </div>
-          <br />
-        </form>
-        <form id="attackStats">
+          <p>
+            <label for="bonusActions">Bonus Actions:</label><br />
+            <textarea
+              id="bonusActions"
+              name="BonusActions"
+              rows="15"
+              cols="50"
+            ></textarea>
+          </p>
+        </div>
+
+        <div class="textarea-row">
+          <p>
+            <label for="classFeatures">Class Features:</label><br />
+            <textarea
+              id="classFeatures"
+              name="ClassFeatures"
+              rows="15"
+              cols="50"
+            ></textarea>
+          </p>
+
+          <p>
+            <label for="speciesTraits">Species Traits:</label><br />
+            <textarea
+              id="speciesTraits"
+              name="SpeciesTraits"
+              rows="15"
+              cols="50"
+            ></textarea>
+          </p>
+        </div>
+      </form>
+
+      <form id="attackStats">
+        <div class="textarea-row">
           <p>
             <label for="hp">HP:</label>
-            <input type="number" id="hp" name="hp" /><br />
+            <input type="number" id="hp" name="hp" />
           </p>
 
           <p>
             <label for="ac">AC:</label>
-            <input type="number" id="ac" name="ac" /><br />
+            <input type="number" id="ac" name="ac" />
           </p>
           <p>
             <label for="speed">Speed:</label>
-            <input type="number" id="speed" name="speed" /><br />
+            <input type="number" id="speed" name="speed" />
           </p>
           <p>
             <label for="initiativeBonus">Initiative:</label>
@@ -99,8 +101,8 @@
             <input type="number" id="spellMod" name="spellMod" /><br />
           </p>
           <br />
-        </form>
-      </div>
+        </div>
+      </form>
 
       <button id="save">Save Changes</button>
     </div>
