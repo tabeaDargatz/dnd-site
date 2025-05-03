@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+@media print {
+  body {
+    margin: 0 !important;
+  }
+}
+
+.ck-content {
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.main-container {
+  position: relative;
+  min-width: 49%;
+}
+
+:root {
+  --ck-color-base-background: #1b1b1b;
+  --ck-color-base-foreground: #333;
+  --ck-color-base-border: #d4af37;
+  --ck-color-base-focus: #ffd700;
+  --ck-color-base-active-focus: #ffd700;
+  --ck-color-base-active: #ffd700;
+  --ck-color-base-text: white;
+  --ck-color-focus-border: #ffd700;
+  --ck-color-shadow-drop: #1b1b1b;
+  --ck-color-shadow-inner: #1b1b1b;
+  --ck-color-shadow-drop-active: #333;
+  --ck-color-focus-outer-shadow: rgb(0 0 0 / 0%);
+  --ck-color-focus-disabled-shadow: #ffd700;
+  --ck-color-button-default-hover-background: #333;
+  --ck-color-button-default-active-background: #333;
+  --ck-color-button-on-background: #333;
+  --ck-color-button-on-hover-background: #333;
+  --ck-color-button-on-active-background: #333;
+  --ck-color-button-on-disabled-background: #333;
+  --ck-color-button-on-color: #ffd700;
+}

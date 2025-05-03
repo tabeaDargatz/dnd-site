@@ -1,4 +1,5 @@
 import "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js";
+import { editors } from "./ckeditor.js";
 window.onload = async function () {
   const name = new URLSearchParams(document.location.search).get("name");
   axios
@@ -7,13 +8,14 @@ window.onload = async function () {
     )
     .then((response) => {
       const characterJson = response.data.results[0];
-      console.log(characterJson);
       initGeneralInfo(characterJson, name);
       initAbilityScores(characterJson);
       initSkills(response.data.Skills);
-      document.getElementById("backstory").value = characterJson["Backstory"];
-      document.getElementById("personality").value =
-        characterJson["Personality"];
+
+      editors.forEach((value, key) => {
+        value.setData(characterJson[key]);
+      });
+
       document.title = name;
       document.getElementById(
         "back-button"
@@ -27,8 +29,6 @@ window.addEventListener("DOMContentLoaded", function () {
     const name = new URLSearchParams(document.location.search).get("name");
     let updateData = fetchUpdates();
 
-    console.log("Data sent to server:");
-    console.log(updateData);
     axios
       .put(
         `https://discord-dice-roll-bot.dargatztabea.workers.dev/api/edit?name=${name}`,
@@ -45,7 +45,14 @@ function fetchUpdates() {
   const characterDetails = document.getElementById("characterDetails");
   const skillModifiers = document.getElementById("skillModifiers");
   let data = new Object();
-  data["characterDetails"] = Object.fromEntries(new FormData(characterDetails));
+
+  let entries = new Map();
+  editors.forEach((value, key) => {
+    entries.set(key, value.getData());
+  });
+  let charDetails = Object.fromEntries(new FormData(characterDetails));
+  let textAreas = Object.fromEntries(entries);
+  data["characterDetails"] = { ...charDetails, ...textAreas };
   data["skillModifiers"] = Object.fromEntries(new FormData(skillModifiers));
   return data;
 }

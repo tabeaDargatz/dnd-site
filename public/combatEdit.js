@@ -1,4 +1,5 @@
 import "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js";
+import { editors } from "./ckeditor.js";
 window.onload = async function () {
   const name = new URLSearchParams(document.location.search).get("name");
   document.getElementById("back-button").href = `combat.html?name=${name}`;
@@ -8,15 +9,10 @@ window.onload = async function () {
     )
     .then((response) => {
       const characterJson = response.data.results[0];
-      console.log(characterJson);
-
-      document.getElementById("classFeatures").value =
-        characterJson["ClassFeatures"];
-      document.getElementById("speciesTraits").value =
-        characterJson["SpeciesTraits"];
-      document.getElementById("actions").value = characterJson["Actions"];
-      document.getElementById("bonusActions").value =
-        characterJson["BonusActions"];
+      console.log(editors);
+      editors.forEach((value, key) => {
+        value.setData(characterJson[key]);
+      });
       document.title = name;
       initAttackStats(characterJson);
     })
@@ -28,8 +24,6 @@ window.addEventListener("DOMContentLoaded", function () {
     const name = new URLSearchParams(document.location.search).get("name");
     let updateData = fetchUpdates();
 
-    console.log("Data sent to server:");
-    console.log(updateData);
     axios
       .put(
         `https://discord-dice-roll-bot.dargatztabea.workers.dev/api/edit?name=${name}`,
@@ -50,9 +44,11 @@ window.addEventListener("DOMContentLoaded", function () {
 function fetchUpdates() {
   let data = new Object();
 
-  let actionsAndFeatures = Object.fromEntries(
-    new FormData(document.getElementById("actionsAndFeatures"))
-  );
+  let entries = new Map();
+  editors.forEach((value, key) => {
+    entries.set(key, value.getData());
+  });
+  let actionsAndFeatures = Object.fromEntries(entries);
   let attackStats = Object.fromEntries(
     new FormData(document.getElementById("attackStats"))
   );

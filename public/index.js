@@ -3,7 +3,6 @@ window.onload = async function () {
   axios
     .get(`https://discord-dice-roll-bot.dargatztabea.workers.dev/api/campaigns`)
     .then((response) => {
-      console.log(response.data);
       var mainContainer = document.getElementById("mainContainer");
 
       response.data.forEach((campaign) => {
@@ -15,8 +14,6 @@ window.onload = async function () {
 };
 
 function createCampaignElement(campaign) {
-  console.log("creating campaign with data: ");
-  console.log(campaign);
   var section = document.createElement("section");
   var title = document.createElement("h2");
   title.appendChild(document.createTextNode(campaign.name));
@@ -35,8 +32,6 @@ function createCampaignElement(campaign) {
 }
 
 function createCharacterElement(character) {
-  console.log("creating character with data: ");
-  console.log(character);
   var clickableSurface = document.createElement("a");
   var name = character.name;
   clickableSurface.href = `characterInfo.html?name=${name}`;

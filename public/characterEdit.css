@@ -69,7 +69,7 @@ button:hover {
 
 .textarea-row {
   display: flex;
-  gap: 20px; /* space between textareas */
+  gap: 2%;
   margin-bottom: 20px;
 }
 

@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="characterEdit.css" />
     <link
+      rel="stylesheet"
+      href="https://cdn.ckeditor.com/ckeditor5/45.0.0/ckeditor5.css"
+      crossorigin
+    />
+    <link rel="stylesheet" href="ck.editor.css" />
+    <link
       href="https://fonts.googleapis.com/css2?family=Spectral&display=swap"
       rel="stylesheet"
     />
@@ -21,47 +27,53 @@
 
       <form id="actionsAndFeatures">
         <div class="textarea-row">
-          <p>
-            <label for="actions">Actions:</label><br />
-            <textarea
-              id="actions"
-              name="Actions"
-              rows="15"
-              cols="50"
-            ></textarea>
-          </p>
-
-          <p>
-            <label for="bonusActions">Bonus Actions:</label><br />
-            <textarea
-              id="bonusActions"
-              name="BonusActions"
-              rows="15"
-              cols="50"
-            ></textarea>
-          </p>
+          <div class="main-container">
+            <label for="Actions">Actions:</label><br />
+            <div
+              class="editor-container editor-container_classic-editor"
+              id="editor-container"
+            >
+              <div class="editor-container__editor">
+                <div class="contentArea" id="Actions"></div>
+              </div>
+            </div>
+          </div>
+          <div class="main-container">
+            <label for="BonusActions">Bonus Actions:</label><br />
+            <div
+              class="editor-container editor-container_classic-editor"
+              id="editor-container"
+            >
+              <div class="editor-container__editor">
+                <div class="contentArea" id="BonusActions"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="textarea-row">
-          <p>
-            <label for="classFeatures">Class Features:</label><br />
-            <textarea
-              id="classFeatures"
-              name="ClassFeatures"
-              rows="15"
-              cols="50"
-            ></textarea>
-          </p>
-
-          <p>
-            <label for="speciesTraits">Species Traits:</label><br />
-            <textarea
-              id="speciesTraits"
-              name="SpeciesTraits"
-              rows="15"
-              cols="50"
-            ></textarea>
-          </p>
+          <div class="main-container">
+            <label for="ClassFeatures">Class Features:</label><br />
+            <div
+              class="editor-container editor-container_classic-editor"
+              id="editor-container"
+            >
+              <div class="editor-container__editor">
+                <div class="contentArea" id="ClassFeatures"></div>
+              </div>
+            </div>
+          </div>
+          <div class="main-container">
+            <label for="SpeciesTraits">Species Traits:</label><br />
+            <div
+              class="editor-container editor-container_classic-editor"
+              id="editor-container"
+            >
+              <div class="editor-container__editor">
+                <div class="contentArea" id="SpeciesTraits"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </form>
 
@@ -106,6 +118,12 @@
 
       <button id="save">Save Changes</button>
     </div>
+
+    <script
+      src="https://cdn.ckeditor.com/ckeditor5/45.0.0/ckeditor5.umd.js"
+      crossorigin
+    ></script>
+    <script type="module" src="ckeditor.js"></script>
     <script type="module" src="combatEdit.js"></script>
   </body>
 </html>

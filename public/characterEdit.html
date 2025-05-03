@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="characterEdit.css" />
     <link
+      rel="stylesheet"
+      href="https://cdn.ckeditor.com/ckeditor5/45.0.0/ckeditor5.css"
+      crossorigin
+    />
+    <link rel="stylesheet" href="ck.editor.css" />
+    <link
       href="https://fonts.googleapis.com/css2?family=Spectral&display=swap"
       rel="stylesheet"
     />
@@ -70,30 +76,34 @@
           </p>
           <p>
             <label for="Faith">Faith:</label>
-            <input type="text" id="faith" name="Faith" /><br /><br />
+            <input type="text" id="faith" name="Faith" /><br />
           </p>
         </div>
+        <br />
         <div class="textarea-row">
-          <p>
-            <label for="Backstory">Backstory:</label>
-            <textarea
-              id="backstory"
-              name="Backstory"
-              rows="10"
-              cols="50"
-            ></textarea>
-            <br />
-          </p>
-          <p>
-            <label for="Personality">Personality:</label>
-            <textarea
-              id="personality"
-              name="Personality"
-              rows="10"
-              cols="50"
-            ></textarea>
-          </p>
-          <br />
+          <div class="main-container">
+            <label for="Backstory">Backstory:</label><br />
+            <div
+              class="editor-container editor-container_classic-editor"
+              id="editor-container"
+            >
+              <div class="editor-container__editor">
+                <div class="contentArea" id="Backstory"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="main-container">
+            <label for="Personality">Personality:</label><br />
+            <div
+              class="editor-container editor-container_classic-editor"
+              id="editor-container"
+            >
+              <div class="editor-container__editor">
+                <div class="contentArea" id="Personality"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="textarea-row">
@@ -222,6 +232,11 @@
 
       <button id="save">Save Changes</button>
     </div>
+    <script
+      src="https://cdn.ckeditor.com/ckeditor5/45.0.0/ckeditor5.umd.js"
+      crossorigin
+    ></script>
+    <script type="module" src="ckeditor.js"></script>
     <script type="module" src="characterEdit.js"></script>
   </body>
 </html>
