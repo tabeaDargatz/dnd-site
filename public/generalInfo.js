@@ -55,14 +55,14 @@ function updateLanguages(response) {
 }
 
 function updateInventory(response) {
-  var inventoryWrapper = document.getElementById("inventory");
+  var inventoryWrapper = document.getElementById("InventoryItems");
   var inventory = document.createElement("div");
   inventory.classList.add("side-by-side-container");
 
-  var items = response.data.Inventory;
+  var items = response.data.InventoryItems;
   var batchesOfItems = sliceIntoBatches(items, 10);
   batchesOfItems.forEach((batchOfItems) => {
-    var itemsList = createItemList(batchOfItems);
+    var itemsList = createItemList(batchOfItems, inventory);
     inventory.appendChild(itemsList);
   });
 
@@ -86,7 +86,7 @@ function sliceIntoBatches(fullList, maxPerBatch) {
   return batches;
 }
 
-function createItemList(items) {
+function createItemList(items, inventory) {
   var itemList = document.createElement("ul");
   inventory.classList.add("center-horz");
 

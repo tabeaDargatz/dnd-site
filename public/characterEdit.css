@@ -81,3 +81,13 @@ button:hover {
 select {
   margin-top: 10px;
 }
+
+li {
+  display: flex;
+  justify-content: space-between; /* Push items to opposite ends */
+  align-items: center;
+}
+
+.addButton {
+  margin-top: 10px;
+}

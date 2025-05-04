@@ -1,5 +1,6 @@
 import "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js";
 import { editors } from "./ckeditor.js";
+const lists = ["Proficiencies", "Languages", "Tools", "InventoryItems"];
 window.onload = async function () {
   const name = new URLSearchParams(document.location.search).get("name");
   axios
@@ -7,10 +8,12 @@ window.onload = async function () {
       `https://discord-dice-roll-bot.dargatztabea.workers.dev/api/characters?name=${name}`
     )
     .then((response) => {
+      console.log(response.data);
       const characterJson = response.data.results[0];
       initGeneralInfo(characterJson, name);
       initAbilityScores(characterJson);
       initSkills(response.data.Skills);
+      initLists(response.data);
 
       editors.forEach((value, key) => {
         value.setData(characterJson[key]);
@@ -46,15 +49,41 @@ function fetchUpdates() {
   const skillModifiers = document.getElementById("skillModifiers");
   let data = new Object();
 
+  let charDetails = Object.fromEntries(new FormData(characterDetails));
+  let textAreas = fetchTextAreaUpdates();
+  let listMap = fetchListUpdates();
+  console.log(listMap);
+  data["characterDetails"] = { ...charDetails, ...textAreas };
+  data["skillModifiers"] = Object.fromEntries(new FormData(skillModifiers));
+  listMap.forEach((value, key) => {
+    data[key] = value;
+  });
+  console.log("DATA SENT TO SERVER");
+  console.log(data);
+  return data;
+}
+
+function fetchListUpdates() {
+  let listMap = new Map();
+  lists.forEach((listName) => {
+    const items = document.getElementById(listName).querySelectorAll("li");
+    let listValue = Array.from(items).map((li) => {
+      // Clone the <li> and remove its button(s) before extracting text
+      const clone = li.cloneNode(true);
+      clone.querySelectorAll("button").forEach((btn) => btn.remove());
+      return clone.textContent.trim();
+    });
+    listMap.set(listName, listValue);
+  });
+  return listMap;
+}
+
+function fetchTextAreaUpdates() {
   let entries = new Map();
   editors.forEach((value, key) => {
     entries.set(key, value.getData());
   });
-  let charDetails = Object.fromEntries(new FormData(characterDetails));
-  let textAreas = Object.fromEntries(entries);
-  data["characterDetails"] = { ...charDetails, ...textAreas };
-  data["skillModifiers"] = Object.fromEntries(new FormData(skillModifiers));
-  return data;
+  return Object.fromEntries(entries);
 }
 
 function initGeneralInfo(characterJson, name) {
@@ -122,3 +151,87 @@ function initSkills(skills) {
   document.getElementById("stealth").value = stealth;
   document.getElementById("survival").value = survival;
 }
+
+function initLists(responseData) {
+  const listSection = document.getElementById("listSection");
+
+  lists.forEach((listName) => {
+    const container = document.createElement("div");
+    const label = document.createElement("label");
+    label.textContent = `${listName}:`;
+    const br = document.createElement("br");
+
+    const ulElement = createList(listName, responseData);
+    const input = createAddInput(listName);
+    const button = createAddButton();
+
+    container.appendChild(label);
+    container.appendChild(br);
+    container.appendChild(ulElement);
+    container.appendChild(input);
+    container.appendChild(button);
+
+    listSection.appendChild(container);
+  });
+}
+
+function createList(listName, responseData) {
+  const ulElement = document.createElement("ul");
+  ulElement.id = listName;
+  responseData[listName].forEach((listElement) => {
+    var liElement = createListElement(listElement);
+    ulElement.append(liElement);
+  });
+  return ulElement;
+}
+
+function createAddInput(listName) {
+  const input = document.createElement("input");
+  input.type = "text";
+  input.placeholder = `Add a new item`;
+  input.classList.add("list-input");
+  return input;
+}
+
+function createAddButton() {
+  const button = document.createElement("button");
+  button.textContent = "Add";
+  button.classList.add("addButton");
+  button.addEventListener("click", (event) => add(event));
+  return button;
+}
+
+function createListElement(listElement) {
+  var liElement = document.createElement("li");
+
+  var deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.addEventListener("click", () => {
+    liElement.remove();
+  });
+
+  liElement.appendChild(document.createTextNode(listElement));
+  liElement.appendChild(deleteButton);
+  return liElement;
+}
+
+function add(event) {
+  const button = event.target;
+  const container = button.parentElement;
+
+  // Find the input and ul inside the same container
+  const input = container.querySelector('input[type="text"]');
+  const list = container.querySelector("ul");
+  const value = input.value.trim();
+
+  if (!value) return;
+
+  const li = createListElement(value);
+  list.appendChild(li);
+
+  input.value = "";
+}
+
+document.querySelectorAll(".addButton").forEach((button) => {
+  button.addEventListener("click", add);
+});
